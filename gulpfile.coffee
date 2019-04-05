@@ -201,18 +201,17 @@ gulp.task 'coffee', ->
 
 gulp.task 'electron-packager', ['build', 'acknowledge'], (callback) ->
   packager = require('electron-packager')
-  
+
   packager
     dir:       paths.build.dir
     out:       'dist'
     name:      'starmade-launcher'
     platform:  targetPlatform
     arch:      targetArch
-    version:   electronVersion
     icon:      paths.res.icon
     overwrite: true
     asar:      true
-    
+
     # The launcher's autoupdate does not replace the executable,
     # meaning it is counterproductive to include the launcher version.
     # including the build hash, however, could be useful.
